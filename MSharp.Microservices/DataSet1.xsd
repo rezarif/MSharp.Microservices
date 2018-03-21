@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="DataSet1" targetNamespace="http://tempuri.org/DataSet1.xsd" xmlns:mstns="http://tempuri.org/DataSet1.xsd" xmlns="http://tempuri.org/DataSet1.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="DataSet1" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="DataSet1" msprop:Generator_UserDSName="DataSet1">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="tblService" msprop:Generator_TableClassName="tblServiceDataTable" msprop:Generator_TableVarName="tabletblService" msprop:Generator_TablePropName="tblService" msprop:Generator_RowDeletingName="tblServiceRowDeleting" msprop:Generator_RowChangingName="tblServiceRowChanging" msprop:Generator_RowEvHandlerName="tblServiceRowChangeEventHandler" msprop:Generator_RowDeletedName="tblServiceRowDeleted" msprop:Generator_UserTableName="tblService" msprop:Generator_RowChangedName="tblServiceRowChanged" msprop:Generator_RowEvArgName="tblServiceRowChangeEvent" msprop:Generator_RowClassName="tblServiceRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="id" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="1" msprop:Generator_ColumnVarNameInTable="columnid" msprop:Generator_ColumnPropNameInRow="id" msprop:Generator_ColumnPropNameInTable="idColumn" msprop:Generator_UserColumnName="id" type="xs:int" minOccurs="0" />
+              <xs:element name="local_status_img" msprop:Generator_ColumnVarNameInTable="columnlocal_status_img" msprop:Generator_ColumnPropNameInRow="local_status_img" msprop:Generator_ColumnPropNameInTable="local_status_imgColumn" msprop:Generator_UserColumnName="local_status_img" type="xs:string" minOccurs="0" />
+              <xs:element name="local_status" msprop:Generator_ColumnVarNameInTable="columnlocal_status" msprop:Generator_ColumnPropNameInRow="local_status" msprop:Generator_ColumnPropNameInTable="local_statusColumn" msprop:Generator_UserColumnName="local_status" type="xs:string" minOccurs="0" />
+              <xs:element name="service" msprop:Generator_ColumnVarNameInTable="columnservice" msprop:Generator_ColumnPropNameInRow="service" msprop:Generator_ColumnPropNameInTable="serviceColumn" msprop:Generator_UserColumnName="service" type="xs:string" minOccurs="0" />
+              <xs:element name="port" msprop:Generator_ColumnVarNameInTable="columnport" msprop:Generator_ColumnPropNameInRow="port" msprop:Generator_ColumnPropNameInTable="portColumn" msprop:Generator_UserColumnName="port" type="xs:string" minOccurs="0" />
+              <xs:element name="open_local" msprop:Generator_ColumnVarNameInTable="columnopen_local" msprop:Generator_ColumnPropNameInRow="open_local" msprop:Generator_ColumnPropNameInTable="open_localColumn" msprop:Generator_UserColumnName="open_local" type="xs:string" minOccurs="0" />
+              <xs:element name="open_uat" msprop:Generator_ColumnVarNameInTable="columnopen_uat" msprop:Generator_ColumnPropNameInRow="open_uat" msprop:Generator_ColumnPropNameInTable="open_uatColumn" msprop:Generator_UserColumnName="open_uat" type="xs:string" minOccurs="0" />
+              <xs:element name="open_live" msprop:Generator_ColumnVarNameInTable="columnopen_live" msprop:Generator_ColumnPropNameInRow="open_live" msprop:Generator_ColumnPropNameInTable="open_liveColumn" msprop:Generator_UserColumnName="open_live" type="xs:string" minOccurs="0" />
+              <xs:element name="git" msprop:Generator_ColumnVarNameInTable="columngit" msprop:Generator_ColumnPropNameInRow="git" msprop:Generator_ColumnPropNameInTable="gitColumn" msprop:Generator_UserColumnName="git" type="xs:string" minOccurs="0" />
+              <xs:element name="code" msprop:Generator_ColumnVarNameInTable="columncode" msprop:Generator_ColumnPropNameInRow="code" msprop:Generator_ColumnPropNameInTable="codeColumn" msprop:Generator_UserColumnName="code" type="xs:string" minOccurs="0" />
+              <xs:element name="is_run" msprop:Generator_ColumnVarNameInTable="columnis_run" msprop:Generator_ColumnPropNameInRow="is_run" msprop:Generator_ColumnPropNameInTable="is_runColumn" msprop:Generator_UserColumnName="is_run" type="xs:boolean" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

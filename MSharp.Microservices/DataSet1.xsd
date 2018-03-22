@@ -26,6 +26,8 @@
               <xs:element name="git" msprop:Generator_ColumnVarNameInTable="columngit" msprop:Generator_ColumnPropNameInRow="git" msprop:Generator_ColumnPropNameInTable="gitColumn" msprop:Generator_UserColumnName="git" type="xs:string" minOccurs="0" />
               <xs:element name="code" msprop:Generator_ColumnVarNameInTable="columncode" msprop:Generator_ColumnPropNameInRow="code" msprop:Generator_ColumnPropNameInTable="codeColumn" msprop:Generator_UserColumnName="code" type="xs:string" minOccurs="0" />
               <xs:element name="is_run" msprop:Generator_ColumnVarNameInTable="columnis_run" msprop:Generator_ColumnPropNameInRow="is_run" msprop:Generator_ColumnPropNameInTable="is_runColumn" msprop:Generator_UserColumnName="is_run" type="xs:boolean" minOccurs="0" />
+              <xs:element name="solution_path" msprop:Generator_ColumnVarNameInTable="columnsolution_path" msprop:Generator_ColumnPropNameInRow="solution_path" msprop:Generator_ColumnPropNameInTable="solution_pathColumn" msprop:Generator_UserColumnName="solution_path" type="xs:string" minOccurs="0" />
+              <xs:element name="application_url" msprop:Generator_ColumnVarNameInTable="columnapplication_url" msprop:Generator_ColumnPropNameInRow="application_url" msprop:Generator_ColumnPropNameInTable="application_urlColumn" msprop:Generator_UserColumnName="application_url" type="xs:string" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>

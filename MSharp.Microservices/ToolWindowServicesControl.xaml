@@ -94,7 +94,7 @@
                     <DataGridTemplateColumn Header="Code">
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
-                                <Button Cursor="Hand" Width="30" Height="30" BorderBrush="White" BorderThickness="0">
+                                <Button Click="code_click" CommandParameter="{Binding Path=solution_path}" Cursor="Hand" Width="30" Height="30" BorderBrush="White" BorderThickness="0">
                                     <Image Width="31" Height="31" Source="Resources/vs.png"></Image>
                                 </Button>
                             </DataTemplate>

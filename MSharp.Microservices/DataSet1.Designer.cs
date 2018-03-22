@@ -301,6 +301,10 @@ namespace MSharp.Microservices {
             
             private global::System.Data.DataColumn columnis_run;
             
+            private global::System.Data.DataColumn columnsolution_path;
+            
+            private global::System.Data.DataColumn columnapplication_url;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public tblServiceDataTable() {
@@ -424,6 +428,22 @@ namespace MSharp.Microservices {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn solution_pathColumn {
+                get {
+                    return this.columnsolution_path;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn application_urlColumn {
+                get {
+                    return this.columnapplication_url;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -459,7 +479,7 @@ namespace MSharp.Microservices {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public tblServiceRow AddtblServiceRow(string local_status_img, string local_status, string service, string port, string open_local, string open_uat, string open_live, string git, string code, bool is_run) {
+            public tblServiceRow AddtblServiceRow(string local_status_img, string local_status, string service, string port, string open_local, string open_uat, string open_live, string git, string code, bool is_run, string solution_path, string application_url) {
                 tblServiceRow rowtblServiceRow = ((tblServiceRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
@@ -472,7 +492,9 @@ namespace MSharp.Microservices {
                         open_live,
                         git,
                         code,
-                        is_run};
+                        is_run,
+                        solution_path,
+                        application_url};
                 rowtblServiceRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowtblServiceRow);
                 return rowtblServiceRow;
@@ -506,6 +528,8 @@ namespace MSharp.Microservices {
                 this.columngit = base.Columns["git"];
                 this.columncode = base.Columns["code"];
                 this.columnis_run = base.Columns["is_run"];
+                this.columnsolution_path = base.Columns["solution_path"];
+                this.columnapplication_url = base.Columns["application_url"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -533,6 +557,10 @@ namespace MSharp.Microservices {
                 base.Columns.Add(this.columncode);
                 this.columnis_run = new global::System.Data.DataColumn("is_run", typeof(bool), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnis_run);
+                this.columnsolution_path = new global::System.Data.DataColumn("solution_path", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnsolution_path);
+                this.columnapplication_url = new global::System.Data.DataColumn("application_url", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnapplication_url);
                 this.columnid.AutoIncrement = true;
                 this.columnid.AutoIncrementSeed = 1;
             }
@@ -853,6 +881,38 @@ namespace MSharp.Microservices {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public string solution_path {
+                get {
+                    try {
+                        return ((string)(this[this.tabletblService.solution_pathColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'solution_path\' in table \'tblService\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tabletblService.solution_pathColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public string application_url {
+                get {
+                    try {
+                        return ((string)(this[this.tabletblService.application_urlColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'application_url\' in table \'tblService\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tabletblService.application_urlColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public bool IsidNull() {
                 return this.IsNull(this.tabletblService.idColumn);
             }
@@ -981,6 +1041,30 @@ namespace MSharp.Microservices {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public void Setis_runNull() {
                 this[this.tabletblService.is_runColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool Issolution_pathNull() {
+                return this.IsNull(this.tabletblService.solution_pathColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void Setsolution_pathNull() {
+                this[this.tabletblService.solution_pathColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool Isapplication_urlNull() {
+                return this.IsNull(this.tabletblService.application_urlColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void Setapplication_urlNull() {
+                this[this.tabletblService.application_urlColumn] = global::System.Convert.DBNull;
             }
         }
         

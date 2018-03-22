@@ -6,25 +6,33 @@
     using System.Windows;
     using System.Windows.Controls;
     using System.Data;
+    using System.Linq;
 
     /// <summary>
     /// Interaction logic for ToolWindowServicesControl.
     /// </summary>
     public partial class ToolWindowServicesControl : UserControl
     {
-        /// <summary>
-        /// Initializes a new instance of the <see cref="ToolWindowServicesControl"/> class.
-        /// </summary>
         public ToolWindowServicesControl()
         {
             this.InitializeComponent();
         }
 
-        /// <summary>
-        /// Handles click on the button by displaying a message box.
-        /// </summary>
-        /// <param name="sender">The event sender.</param>
-        /// <param name="e">The event args.</param>
+        private string applicationUrl(FileInfo solutionFile)
+        {
+            string result = "";
+            var strFilePath = solutionFile.Directory.FullName + @"\Website\Properties\launchsettings.json";
+            if (File.Exists(strFilePath))
+            {
+                //FileInfo launchSettingFile = new FileInfo(strFilePath);
+                string text = File.ReadAllText(strFilePath);
+                JsonValue value = JsonValue.Parse(text);
+                result = value["profiles"]["Website"]["applicationUrl"].ToString().Replace('"', ' ').Trim();
+            }
+            
+            return result;
+        }
+
         [SuppressMessage("Microsoft.Globalization", "CA1300:SpecifyMessageBoxOptions", Justification = "Sample code")]
         [SuppressMessage("StyleCop.CSharp.NamingRules", "SA1300:ElementMustBeginWithUpperCaseLetter", Justification = "Default event handler naming pattern")]
         private void button1_Click(object sender, RoutedEventArgs e)
@@ -40,28 +48,36 @@
             // Get the selected file name and display in a TextBox 
             if (dlg.ShowDialog() == true)
             {
-                // Open document 
                 filename = dlg.FileName;
+                FileInfo fInf = new FileInfo(filename);
+                var parentDir = fInf.Directory.Parent;
+
                 string text = File.ReadAllText(filename);
                 JsonValue value = JsonValue.Parse(text);
                 var solution = value[0]["Solution"]["FullName"].ToString();
                 txtSolutionName.Text = "Solution: " + solution.Replace('"',' ');
                 var services = value[0]["Services"];
 
-                var a = JsonArray.Parse(services.ToString());
+                var arrServices = JsonArray.Parse(services.ToString());
                 DataSet1.tblServiceDataTable tblServices = new DataSet1.tblServiceDataTable();
-                foreach (var item in a)
+                foreach (var srvc in arrServices)
                 {
                     DataRow dr = tblServices.NewRow();
-
-                    var pair = (System.Collections.Generic.KeyValuePair<string, JsonValue>)item;
-                    var k = pair.Key;
-                    var v = pair.Value;
-                    dr["service"] = k;
-                    JsonValue srvValue = JsonValue.Parse(v.ToString());
-                    dr["open_live"] = srvValue["LiveUrl"].ToString().Replace('"', ' ');
-                    dr["open_uat"] = srvValue["UatUrl"].ToString().Replace('"', ' ');
-
+                    var srvcPair = (System.Collections.Generic.KeyValuePair<string, JsonValue>)srvc;
+                    var ServiceName = srvcPair.Key;
+                    var ServiceValue = srvcPair.Value;
+                    dr["service"] = ServiceName;
+                    JsonValue srvJValue = JsonValue.Parse(ServiceValue.ToString());
+                    dr["open_live"] = srvJValue["LiveUrl"].ToString().Replace('"', ' ');
+                    dr["open_uat"] = srvJValue["UatUrl"].ToString().Replace('"', ' ');
+                    var solutionFile = parentDir.GetFiles(ServiceName + ".sln", SearchOption.AllDirectories).FirstOrDefault<FileInfo>();
+                    if (solutionFile != null)
+                    {
+                        dr["solution_path"] = solutionFile.FullName;
+                        var ApplicationUrl = applicationUrl(solutionFile);
+                        dr["application_url"] = ApplicationUrl;
+                        dr["port"] = ApplicationUrl.Substring(ApplicationUrl.LastIndexOf(":")+1);
+                    }
 
                     tblServices.Rows.Add(dr);
                 }
@@ -94,5 +110,24 @@
 
             MessageBox.Show("Open menu is clicked. " + mnuItem.CommandParameter);
         }
+
+        private void code_click(object sender, RoutedEventArgs e)
+        {
+            var msg = "Is Nothing";
+
+            Button mnuItem = (Button)sender;
+            if (mnuItem.CommandParameter != null)
+            {
+                string solutionPath = mnuItem.CommandParameter.ToString().Trim();
+                if (solutionPath.Length != 0)
+                {
+                    msg = solutionPath;
+                    //MessageBox.Show(solutionPath);
+                }
+            }
+
+            MessageBox.Show(msg);
+        }
+
     }
 }

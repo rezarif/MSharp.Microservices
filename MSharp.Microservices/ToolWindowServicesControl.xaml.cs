@@ -117,7 +117,6 @@
                         resultDte = foundDte;
                     }
                 }
-
             }
 
             if (resultDte == null)
@@ -126,8 +125,6 @@
                 resultDte = (DTE)Activator.CreateInstance(typeDTE, true);
                 resultDte.UserControl = true;
                 resultDte.Solution.Open(solutionPath);
-                //resultDte.MainWindow.Activate();
-                //Marshal.ReleaseComObject(resultDte);
             }
             return resultDte;
         }
@@ -176,6 +173,14 @@
                         var ApplicationUrl = applicationUrl(solutionFile);
                         dr["application_url"] = ApplicationUrl;
                         dr["port"] = ApplicationUrl.Substring(ApplicationUrl.LastIndexOf(":") + 1);
+
+                        dr["local_status_img"] = "Resources/crclRed.png";
+                        dr["local_status"] = "Stopped";
+                    }
+                    else
+                    {
+                        dr["local_status_img"] = "Resources/crclGray.png";
+                        dr["local_status"] = "Source not available locally";
                     }
 
                     tblServices.Rows.Add(dr);

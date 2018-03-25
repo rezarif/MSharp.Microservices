@@ -43,7 +43,7 @@
                     <DataGridTemplateColumn Header="Local status">
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
-                                <Image ToolTip="{Binding Path=local_status}" Height="30" Width="30" Source="{Binding Path=local_status_img}"></Image>
+                                <Image ToolTip="{Binding Path=local_status}" Height="18" Width="18" Source="{Binding Path=local_status_img}"></Image>
                             </DataTemplate>
                         </DataGridTemplateColumn.CellTemplate>
                     </DataGridTemplateColumn>
@@ -64,18 +64,18 @@
                     <DataGridTemplateColumn Header="Run" IsReadOnly="True" SortMemberPath="Input.OriginalUri.AbsoluteUri" >
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
-                                <ToggleButton Height="30" Width="30" Checked="HandleCheck" Unchecked="HandleUnchecked" CommandParameter="{Binding Path=Service}" Style="{StaticResource MyToggleButtonStyle}" BorderBrush="White" />
+                                <ToggleButton Height="24" Width="24" Checked="HandleCheck" Unchecked="HandleUnchecked" CommandParameter="{Binding Path=Service}" Style="{StaticResource MyToggleButtonStyle}" BorderBrush="White" />
                             </DataTemplate>
                         </DataGridTemplateColumn.CellTemplate>
                     </DataGridTemplateColumn>
                     <DataGridTemplateColumn Header="Open">
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
-                                <Menu Height="30" Width="30" HorizontalAlignment="Center" VerticalAlignment="Center">
+                                <Menu Height="24" Width="24" HorizontalAlignment="Center" VerticalAlignment="Center">
                                     <Menu.Background>
                                         <ImageBrush ImageSource="Resources/chrome.png"/>
                                     </Menu.Background>
-                                    <MenuItem Width="30" Height="30">
+                                    <MenuItem Width="24" Height="24">
                                         <MenuItem Header="Local" Click="open_click" CommandParameter="{Binding Path=open_local}" />
                                         <MenuItem Header="UAT" Click="open_click"  CommandParameter="{Binding Path=open_uat}"/>
                                         <MenuItem Header="Live" Click="open_click" CommandParameter="{Binding Path=open_live}"/>
@@ -94,8 +94,8 @@
                     <DataGridTemplateColumn Header="Code">
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
-                                <Button Click="code_click" CommandParameter="{Binding Path=solution_path}" Cursor="Hand" Width="30" Height="30" BorderBrush="White" BorderThickness="0">
-                                    <Image Width="31" Height="31" Source="Resources/vs.png"></Image>
+                                <Button Click="code_click" CommandParameter="{Binding Path=solution_path}" Cursor="Hand" Width="24" Height="24" BorderBrush="White" BorderThickness="0">
+                                    <Image Width="24" Height="24" Source="Resources/vs.png"></Image>
                                 </Button>
                             </DataTemplate>
                         </DataGridTemplateColumn.CellTemplate>

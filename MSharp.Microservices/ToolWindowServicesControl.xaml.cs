@@ -207,7 +207,6 @@
         private void HandleCheck(object sender, RoutedEventArgs e)
         {
             MessageBox.Show("Service Started");
-            MessageBox.Show(NumOfChange(""));
         }
 
         private void HandleUnchecked(object sender, RoutedEventArgs e)

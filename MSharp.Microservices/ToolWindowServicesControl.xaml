@@ -46,6 +46,11 @@
                                 <Image ToolTip="{Binding Path=local_status}" Height="18" Width="18" Source="{Binding Path=local_status_img}"></Image>
                             </DataTemplate>
                         </DataGridTemplateColumn.CellTemplate>
+                        <DataGridTemplateColumn.HeaderStyle>
+                            <Style TargetType="DataGridColumnHeader">
+                                <Setter Property="HorizontalContentAlignment" Value="Center" />
+                            </Style>
+                        </DataGridTemplateColumn.HeaderStyle>
                     </DataGridTemplateColumn>
                     <DataGridTextColumn Header="Service" Binding="{Binding service}" IsReadOnly="True" >
                         <DataGridTextColumn.ElementStyle>
@@ -54,12 +59,18 @@
                             </Style>
                         </DataGridTextColumn.ElementStyle>
                     </DataGridTextColumn>
-                    <DataGridTextColumn Header="Service" Binding="{Binding port}" IsReadOnly="True" >
+                    <DataGridTextColumn Header="Port" Binding="{Binding port}" IsReadOnly="True" >
                         <DataGridTextColumn.ElementStyle>
                             <Style TargetType="TextBlock">
                                 <Setter Property="VerticalAlignment" Value="Center" />
+                                <Setter Property="HorizontalAlignment" Value="Center" />
                             </Style>
                         </DataGridTextColumn.ElementStyle>
+                        <DataGridTextColumn.HeaderStyle>
+                            <Style TargetType="DataGridColumnHeader">
+                                <Setter Property="HorizontalContentAlignment" Value="Center" />
+                            </Style>
+                        </DataGridTextColumn.HeaderStyle>
                     </DataGridTextColumn>
                     <DataGridTemplateColumn Header="Run" IsReadOnly="True" SortMemberPath="Input.OriginalUri.AbsoluteUri" >
                         <DataGridTemplateColumn.CellTemplate>
@@ -67,6 +78,11 @@
                                 <ToggleButton Height="24" Width="24" Checked="HandleCheck" Unchecked="HandleUnchecked" CommandParameter="{Binding Path=Service}" Style="{StaticResource MyToggleButtonStyle}" BorderBrush="White" />
                             </DataTemplate>
                         </DataGridTemplateColumn.CellTemplate>
+                        <DataGridTemplateColumn.HeaderStyle>
+                            <Style TargetType="DataGridColumnHeader">
+                                <Setter Property="HorizontalContentAlignment" Value="Center" />
+                            </Style>
+                        </DataGridTemplateColumn.HeaderStyle>
                     </DataGridTemplateColumn>
                     <DataGridTemplateColumn Header="Open">
                         <DataGridTemplateColumn.CellTemplate>
@@ -83,13 +99,24 @@
                                 </Menu>
                             </DataTemplate>
                         </DataGridTemplateColumn.CellTemplate>
+                        <DataGridTemplateColumn.HeaderStyle>
+                            <Style TargetType="DataGridColumnHeader">
+                                <Setter Property="HorizontalContentAlignment" Value="Center" />
+                            </Style>
+                        </DataGridTemplateColumn.HeaderStyle>
                     </DataGridTemplateColumn>
                     <DataGridTextColumn Header="Git" Binding="{Binding git}" IsReadOnly="True" >
                         <DataGridTextColumn.ElementStyle>
                             <Style TargetType="TextBlock">
                                 <Setter Property="VerticalAlignment" Value="Center" />
+                                <Setter Property="HorizontalAlignment" Value="Center" />
                             </Style>
                         </DataGridTextColumn.ElementStyle>
+                        <DataGridTextColumn.HeaderStyle>
+                            <Style TargetType="DataGridColumnHeader">
+                                <Setter Property="HorizontalContentAlignment" Value="Center" />
+                            </Style>
+                        </DataGridTextColumn.HeaderStyle>
                     </DataGridTextColumn>
                     <DataGridTemplateColumn Header="Code">
                         <DataGridTemplateColumn.CellTemplate>

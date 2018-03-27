@@ -11,6 +11,7 @@
     using EnvDTE;
     using System;
     using System.Runtime.InteropServices.ComTypes;
+    using LibGit2Sharp;
 
     /// <summary>
     /// Interaction logic for ToolWindowServicesControl.
@@ -28,12 +29,10 @@
             var strFilePath = solutionFile.Directory.FullName + @"\Website\Properties\launchsettings.json";
             if (File.Exists(strFilePath))
             {
-                //FileInfo launchSettingFile = new FileInfo(strFilePath);
                 string text = File.ReadAllText(strFilePath);
                 JsonValue value = JsonValue.Parse(text);
                 result = value["profiles"]["Website"]["applicationUrl"].ToString().Replace('"', ' ').Trim();
             }
-
             return result;
         }
 
@@ -129,6 +128,20 @@
             return resultDte;
         }
 
+        private string NumOfChange(string repoPath)
+        {
+            var result = "N/A";
+
+            if (Repository.IsValid(repoPath))
+            {
+                using (var repo = new Repository(repoPath))
+                {
+                    result = repo.Diff.Compare<Patch>().ToList<PatchEntryChanges>().Count.ToString();
+                }
+            }
+            return result;
+        }
+
         [SuppressMessage("Microsoft.Globalization", "CA1300:SpecifyMessageBoxOptions", Justification = "Sample code")]
         [SuppressMessage("StyleCop.CSharp.NamingRules", "SA1300:ElementMustBeginWithUpperCaseLetter", Justification = "Default event handler naming pattern")]
         private void button1_Click(object sender, RoutedEventArgs e)
@@ -139,9 +152,7 @@
             dlg.DefaultExt = ".json";
             dlg.Filter = "Services Files (Services.json)|*.json";
 
-            var msg = "";
             string filename = "empty";
-            // Get the selected file name and display in a TextBox 
             if (dlg.ShowDialog() == true)
             {
                 filename = dlg.FileName;
@@ -176,13 +187,16 @@
 
                         dr["local_status_img"] = "Resources/crclRed.png";
                         dr["local_status"] = "Stopped";
+                        //----git part-----
+                        dr["git"] = NumOfChange(solutionFile.DirectoryName);
+
                     }
                     else
                     {
                         dr["local_status_img"] = "Resources/crclGray.png";
                         dr["local_status"] = "Source not available locally";
                     }
-
+                    
                     tblServices.Rows.Add(dr);
                 }
                 gridSerives.DataContext = tblServices.DefaultView;
@@ -192,12 +206,13 @@
 
         private void HandleCheck(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("Button is Checked");
+            MessageBox.Show("Service Started");
+            MessageBox.Show(NumOfChange(""));
         }
 
         private void HandleUnchecked(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("Button is unchecked.");
+            MessageBox.Show("Service Stoped");
         }
 
         private void open_click(object sender, RoutedEventArgs e)
@@ -211,8 +226,6 @@
                     System.Diagnostics.Process.Start(url);
                 }
             }
-
-            MessageBox.Show("Open menu is clicked. " + mnuItem.CommandParameter);
         }
 
         private void code_click(object sender, RoutedEventArgs e)
@@ -225,33 +238,9 @@
                 {
                     var resultDte = SolutionDte(solutionPath);
 
-                    //DTE resultDte = null;
-
-                    //System.Diagnostics.Process[] processes = System.Diagnostics.Process.GetProcessesByName("devenv");
-                    //foreach (System.Diagnostics.Process p in processes)
-                    //{
-                    //    var foundDte = GetDTE(p.Id);
-                    //    if (foundDte.Solution.FullName == solutionPath)
-                    //    {
-                    //        resultDte = foundDte;
-                    //        //resultDte.MainWindow.Activate();
-                    //    }
-                    //}
-
-                    //if (resultDte == null)
-                    //{
-                    //    Type typeDTE = Type.GetTypeFromProgID("VisualStudio.DTE.15.0");
-                    //    resultDte = (DTE)Activator.CreateInstance(typeDTE, true);
-                    //    resultDte.UserControl = true;
-                    //    resultDte.Solution.Open(solutionPath);
-                    //    //resultDte.MainWindow.Activate();
-                    //    //Marshal.ReleaseComObject(resultDte);
-                    //}
-
                     if (resultDte != null)
                     {
                         resultDte.MainWindow.Activate();
-
                     }
                 }
             }
